@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贪吃蛇游戏</title>
+    <style>
+      canvas {
+        border: 2px solid black;
+        display: block;
+        margin: 0 auto;
+      }
+      .game-container {
+        text-align: center;
+        padding: 20px;
+      }
+      .score {
+        font-size: 24px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      .button {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        display: inline-block;
+      }
+      #resetButton {
+        background-color: #4caf50;
+        display: none;
+      }
+      #modeButton {
+        background-color: #2196f3;
+      }
+      .button:hover {
+        filter: brightness(90%);
+      }
+      .control-buttons {
+        display: none;
+        margin-top: 20px;
+        touch-action: none;
+      }
+      .control-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 5px 0;
+      }
+      .control-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        touch-action: none;
+      }
+      .player2-controls {
+        display: none;
+      }
+      .player1-controls .control-btn {
+        background-color: rgba(0, 255, 0, 0.2);
+      }
+      .player2-controls .control-btn {
+        background-color: rgba(255, 0, 0, 0.2);
+      }
+      .control-btn:active {
+        transform: scale(0.95);
+      }
+      @media (hover: none) and (pointer: coarse) {
+        .control-buttons {
+          display: block;
+        }
+      }
+      .speed-btn {
+        width: 80px !important;
+        margin-top: 20px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="score">
+        <div>玩家1得分：<span id="score">0</span></div>
+        <div id="score2Container" style="display: none">
+          玩家2得分：<span id="score2">0</span>
+        </div>
+      </div>
+      <canvas id="gameCanvas" width="600" height="600"></canvas>
+      <div>
+        <button id="resetButton" class="button">重新开始</button>
+        <button id="modeButton" class="button">按M键切换对战模式</button>
+      </div>
+      <div class="control-buttons">
+        <div class="player1-controls">
+          <div class="control-row">
+            <button class="control-btn" data-key="38">↑</button>
+          </div>
+          <div class="control-row">
+            <button class="control-btn" data-key="37">←</button>
+            <button class="control-btn" data-key="40">↓</button>
+            <button class="control-btn" data-key="39">→</button>
+          </div>
+        </div>
+        <div class="player2-controls">
+          <div class="control-row">
+            <button class="control-btn" data-key="87">W</button>
+          </div>
+          <div class="control-row">
+            <button class="control-btn" data-key="65">A</button>
+            <button class="control-btn" data-key="83">S</button>
+            <button class="control-btn" data-key="68">D</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
