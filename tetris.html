@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>俄罗斯方块</title>
+    <style>
+      body {
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 15px;
+      }
+      .game-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+      }
+      canvas {
+        border: 2px solid #333;
+        background-color: #fff;
+        max-width: 100%;
+        height: auto;
+      }
+      .info-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .score {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .controls {
+        font-size: 16px;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .controls p {
+        margin: 5px 0;
+      }
+      .mobile-controls {
+        display: none;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .control-btn {
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        background-color: #333;
+        color: white;
+        font-size: 24px;
+        touch-action: manipulation;
+      }
+      .restart-btn {
+        display: none;
+        padding: 15px 30px;
+        font-size: 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position: absolute;
+        left: 200px;
+        top: 400px;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s;
+        z-index: 100;
+      }
+      .restart-btn:hover {
+        background-color: #45a049;
+      }
+      @media (max-width: 768px) {
+        .game-container {
+          flex-direction: column;
+        }
+        .mobile-controls {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          justify-items: center;
+        }
+        .controls p:not(:last-child) {
+          display: none;
+        }
+      }
+      #previewCanvas {
+        border: 2px solid #333;
+        background-color: #fff;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>俄罗斯方块</h1>
+    <div class="game-container">
+      <canvas id="gameCanvas" width="400" height="800"></canvas>
+      <div class="info-panel">
+        <div class="score">分数: <span id="score">0</span></div>
+        <canvas id="previewCanvas" width="160" height="160"></canvas>
+        <div class="controls">
+          <h3>操作说明:</h3>
+          <p>← →: 左右移动</p>
+          <p>↑: 旋转</p>
+          <p>↓: 加速下落</p>
+          <p>空格: 直接落下</p>
+          <p>触屏设备可使用屏幕按钮控制</p>
+        </div>
+      </div>
+    </div>
+    <button id="restartBtn" class="restart-btn">重新开始</button>
+    <div class="mobile-controls">
+      <button class="control-btn" id="rotateBtn">↺</button>
+      <button class="control-btn" id="dropBtn">↡</button>
+      <button class="control-btn" id="leftBtn">←</button>
+      <button class="control-btn" id="downBtn">↓</button>
+      <button class="control-btn" id="rightBtn">→</button>
+    </div>
+    <script src="tetris.js"></script>
+  </body>
+</html>
